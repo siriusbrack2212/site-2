@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+
+    <h2>Tarefas</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Restaurantes</h2>
+    <ul>
+        {% for restaurant in restaurants %}
+            <li>{{ restaurant }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if link_available %}
+        <form action="{{ url_for('generate_link_route') }}" method="get">
+            <button type="submit">Gerar Link</button>
+        </form>
+    {% else %}
+        <p>O limite de geração de links foi atingido.</p>
+    {% endif %}
+</body>
+</html>
